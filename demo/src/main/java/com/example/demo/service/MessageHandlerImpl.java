@@ -22,7 +22,7 @@ public class MessageHandlerImpl {
 
     public void handleMessage() throws IOException {
         // needs to be change every time you use it if clone or run in other computer
-        String filePath = "/Users/farellfebriano/Desktop/spring_boot/data_hub_clone_v1/mini_data_hub_v2/src/main/sampleData/studentsData.json";
+        String filePath = "/Users/farellfebriano/Desktop/data_hub_v2/demo/src/main/sampleData/sampleData.json";
         /*
             Paths.get(filePath) --> create an object from that path
             Files.readAllBytes(Paths.get(filePath)) --> class, reads all the bytes from a file and

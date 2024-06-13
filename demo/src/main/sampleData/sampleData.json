@@ -1,0 +1,35 @@
+{
+  "request": {
+    "student": {
+      "name": "farell febraino",
+      "age": 22,
+      "email": "farellfebraino@gmail.com",
+      "major": "bussines analytics",
+      "address": {
+        "city": "anytown",
+        "state": "anystate",
+        "street": "123 main st",
+        "zipcode": "12345"
+      },
+      "class_work": [
+        {
+          "classid": "Music202",
+          "room": "A123",
+          "teacher": "adrea"
+        },
+        {
+          "classid": "math",
+          "room": "A123",
+          "teacher": "pavan"
+        },
+        {
+          "classid": "Music202",
+          "room": "678",
+          "teacher": "Austin"
+        }
+
+      ]
+
+    }
+}
+}

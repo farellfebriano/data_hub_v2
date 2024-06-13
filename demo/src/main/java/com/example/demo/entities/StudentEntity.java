@@ -27,8 +27,6 @@ public class StudentEntity {
     @JoinColumn(name = "ID")
     private AddressEntity addressEntity;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    List<ClassWorkEntity> classWorkEntity;
 
     @Column(name = "Name")
     private String name;
@@ -51,15 +49,6 @@ public class StudentEntity {
     public void setAddressEntity(AddressEntity addressEntity) {
         this.addressEntity = addressEntity;
     }
-
-    public List<ClassWorkEntity> getClassWorkEntity() {
-        return classWorkEntity;
-    }
-
-    public void setClassWorkEntity(List<ClassWorkEntity> classWorkEntity) {
-        this.classWorkEntity = classWorkEntity;
-    }
-
 
     public String getName() {
         return name;

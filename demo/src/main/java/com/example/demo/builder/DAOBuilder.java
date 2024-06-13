@@ -33,12 +33,11 @@ public class DAOBuilder {
         int age = masterObjectPojo.getRequest().getStudent().getAge();
         String email = masterObjectPojo.getRequest().getStudent().getEmail();
         //        SETTING ADDRESS
+
         String street = masterObjectPojo.getRequest().getStudent().getAddress().getStreet();
         String city = masterObjectPojo.getRequest().getStudent().getAddress().getCity();
         String state = masterObjectPojo.getRequest().getStudent().getAddress().getState();
         String zipcode = masterObjectPojo.getRequest().getStudent().getAddress().getZipcode();
-        //         SETTING CLASSWORK
-        List<ClassWorkPojo> listOfClassWork = masterObjectPojo.getRequest().getStudent().getClassWork();
 
 
         //         SETTING THE ADDRESS ENTITY
@@ -48,15 +47,7 @@ public class DAOBuilder {
         addressEntity.setState(state);
         addressEntity.setZipcode(zipcode);
 
-        //          SETTING THE CLASSWORK ENTITY
-        List<ClassWorkEntity> listOfWorkEntities = new ArrayList<>();
-        listOfClassWork.forEach((data) -> {
-            ClassWorkEntity classWorkEntity = new ClassWorkEntity();
-            classWorkEntity.setClassID(data.getClassID());
-            classWorkEntity.setRoom(data.getRoom());
-            classWorkEntity.setTeacher(data.getTeacher());
-            listOfWorkEntities.add(classWorkEntity);
-        });
+
         //         SETTING THE STUDENT ENTITY
         StudentEntity studentEntity = new StudentEntity();
         studentEntity.setName(name);
@@ -64,7 +55,6 @@ public class DAOBuilder {
         studentEntity.setAge(age);
         studentEntity.setEmail(email);
         studentEntity.setAddressEntity(addressEntity);
-        studentEntity.setClassWorkEntity(listOfWorkEntities);
         studentRepositories.save(studentEntity);
 
 

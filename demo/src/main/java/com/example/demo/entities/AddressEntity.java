@@ -18,6 +18,7 @@ public class AddressEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ID;
 
+
     @Column(name = "street")
     private String street;
     @Column(name = "city")

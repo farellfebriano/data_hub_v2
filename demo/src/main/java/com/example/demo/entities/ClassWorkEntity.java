@@ -12,7 +12,9 @@ public class ClassWorkEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ClassWorkId;
 
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_ID")
+    private StudentEntity studentEntity;
 
     @Column(name="ID")
     private String classID;
@@ -23,6 +25,13 @@ public class ClassWorkEntity {
     @Column(name="teacher")
     private String teacher;
 
+    public StudentEntity getStudentEntity() {
+        return studentEntity;
+    }
+
+    public void setStudentEntity(StudentEntity studentEntity) {
+        this.studentEntity = studentEntity;
+    }
 
     public Integer getClassWorkId() {
         return ClassWorkId;
