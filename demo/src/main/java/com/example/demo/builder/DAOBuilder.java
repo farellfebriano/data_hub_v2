@@ -7,6 +7,7 @@ import com.example.demo.entities.AddressEntity;
 import com.example.demo.entities.ClassWorkEntity;
 import com.example.demo.entities.StudentEntity;
 import com.example.demo.repositories.AddressRepositories;
+import com.example.demo.repositories.ClassWorkRepositories;
 import com.example.demo.repositories.StudentRepositories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,9 @@ public class DAOBuilder {
 
     @Autowired
     AddressRepositories addressRepositories;
+
+    @Autowired
+    ClassWorkRepositories classWorkRepositories;
 
     public void setAllEntities(MasterObjectPojo masterObjectPojo) {
 
@@ -57,6 +61,23 @@ public class DAOBuilder {
         studentEntity.setAddressEntity(addressEntity);
         studentRepositories.save(studentEntity);
 
+        // calling setClassWork
+        setClassWork(masterObjectPojo,studentEntity);
+
+
+    }
+
+    public void setClassWork(MasterObjectPojo masterObjectPojo, StudentEntity studentEntity){
+        List<ClassWorkEntity>listOfClassWorkEntity=new ArrayList<>();
+        masterObjectPojo.getRequest().getStudent().getClassWork().forEach(classWorkPojo->{
+            ClassWorkEntity classWorkEntity=new ClassWorkEntity();
+            classWorkEntity.setStudentEntity(studentEntity);
+            classWorkEntity.setClassID(classWorkPojo.getClassID());
+            classWorkEntity.setRoom(classWorkPojo.getRoom());
+            classWorkEntity.setTeacher(classWorkPojo.getTeacher());
+            listOfClassWorkEntity.add(classWorkEntity);
+        });
+        classWorkRepositories.saveAll(listOfClassWorkEntity);
 
     }
 }

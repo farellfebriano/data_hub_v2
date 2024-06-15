@@ -1,7 +1,10 @@
 package com.example.demo.POJO;
 import com.fasterxml.jackson.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "classID",
@@ -18,8 +21,8 @@ public class ClassWorkPojo {
     @JsonProperty("teacher")
     private String teacher;
 
-    @JsonProperty("class_work")
-    private List<ClassWorkPojo> classWorkPojo;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("classID")
     public String getClassID() {
@@ -52,12 +55,13 @@ public class ClassWorkPojo {
     }
 
     @JsonAnyGetter
-    public List<ClassWorkPojo> getClassWorkPojo() {
-        return classWorkPojo;
+    public Map<String, Object> getAdditionalProperties() {
+        return additionalProperties;
+    }
+    @JsonAnySetter
+    public void setAdditionalProperties(Map<String, Object> additionalProperties) {
+        this.additionalProperties = additionalProperties;
     }
 
-    @JsonAnySetter
-    public void setClassWorkPojo(List<ClassWorkPojo> classWorkPojo) {
-        this.classWorkPojo = classWorkPojo;
-    }
+
 }

@@ -33,13 +33,6 @@ public class ClassWorkEntity {
         this.studentEntity = studentEntity;
     }
 
-    public Integer getClassWorkId() {
-        return ClassWorkId;
-    }
-
-    public void setClassWorkId(Integer classWorkId) {
-        ClassWorkId = classWorkId;
-    }
 
     public String getClassID() {
         return classID;

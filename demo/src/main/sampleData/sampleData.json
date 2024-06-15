@@ -13,17 +13,17 @@
       },
       "class_work": [
         {
-          "classid": "Music202",
+          "classID": "Music202",
           "room": "A123",
           "teacher": "adrea"
         },
         {
-          "classid": "math",
+          "classID": "math",
           "room": "A123",
           "teacher": "pavan"
         },
         {
-          "classid": "Music202",
+          "classID": "Music202",
           "room": "678",
           "teacher": "Austin"
         }
