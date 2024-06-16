@@ -8,6 +8,7 @@ import com.example.demo.service.MessageHandlerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -32,5 +33,13 @@ public class LocalController {
     public List<StudentEntity> getAllStudent() throws IOException {
         return studentRepositories.findAll();
     }
+
+    @GetMapping(value = "/student/{name}")
+    public StudentEntity getStudentByName(@PathVariable String name) throws IOException {
+        System.out.println(name);
+        return studentRepositories.findByName(name);
+    }
+
+
 
 }

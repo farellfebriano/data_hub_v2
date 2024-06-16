@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
@@ -22,8 +24,10 @@ import java.util.List;
 /*
  *  automatically configure the test database.
  */
+
 @DataJpaTest
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+@Sql("/data.sql")
 public class RepositoryTesting {
 
     @Autowired
@@ -71,9 +75,24 @@ public class RepositoryTesting {
         //ASSERT
         Assertions.assertThat(allStudent.size()).isNotZero();
     }
-    @Test
-    public void StudentRepository_GetID_ReturnMoreThenOneStudent() {
 
+    // TESTING CUSTOM QUERY
+    @Test
+    public void StudentRepository_GetByName() {
+
+        //ARRANGE
+        StudentEntity student1=new StudentEntity();
+        student1.setName("farell febriano");
+        student1.setEmail("farellfebriano8@gmail.com");
+        student1.setMajor("computer science");
+        student1.setAge(23);
+
+        // ACT
+        studentRepositories.save(student1);
+        StudentEntity studentEntity=studentRepositories.findByName("farell febriano");
+
+        //ASSERT
+        Assertions.assertThat(studentEntity).isNotNull();
     }
 
 
